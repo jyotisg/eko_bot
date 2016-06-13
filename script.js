@@ -15,9 +15,9 @@ module.exports = new Script({
             if (err) throw err;
             // results is an array consisting of messages collected during execution 
             console.log('results: %j', results);
-            });
-            return bot.say('Hi! I\'m blaa blaa blaa Bot!')
+             return bot.say(''+results)
                 .then(() => 'askName');
+            });
         }
     },
 
