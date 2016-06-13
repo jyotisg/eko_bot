@@ -19,11 +19,7 @@ processing: {
         prompt: (bot) => bot.say('What\'s your name?'),
         receive: (bot, message) => {
             const name = message.text;
-             var pyshell = new PythonShell('my_script.py');
-                   pyshell.on('message', function (message) {
-  // received a message sent from the Python script (a simple "print" statement) 
-  return bot.say(message);
-});
+         
             return bot.setProp('name', name)
                 .then(() => bot.say(`Great! I'll call you ${name}
 Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
