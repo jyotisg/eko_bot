@@ -7,13 +7,8 @@ module.exports = new Script({
 
     start: {
         receive: (bot) => {
-            PythonShell.run('my_script.py', function (err, results) {
-            if (err) throw err;
-            // results is an array consisting of messages collected during execution 
-            console.log('results: %j', results);
-             return bot.say(''+results)
-                .then(() => 'askName');
-            });
+                   return bot.say('Hi! I\'m Smooch Bot!')
+                   .then(() => 'askName');
         }
     },
 
@@ -21,7 +16,10 @@ module.exports = new Script({
         prompt: (bot) => bot.say('What\'s your name?'),
         receive: (bot, message) => {
             const name = message.text;
-            return bot.setProp('name', name)
+             PythonShell.run('my_script.py', function (err, results) {
+            if (err) throw err;
+             return bot.setProp('name', name)
+            });
                 .then(() => bot.say(`Great! I'll call you ${name}
 Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
                 .then(() => 'finish');
