@@ -7,7 +7,7 @@ module.exports = new Script({
 
     start: {
         receive: (bot) => {
-                   return bot.say('Hi! I\'m Smooch Bot!')
+                   return bot.say('Hi! I\'m faltu Bot!')
                    .then(() => 'askName');
         }
     },
@@ -18,7 +18,7 @@ module.exports = new Script({
             const name = message.text;
              PythonShell.run('my_script.py', function (err, results) {
             if (err) throw err;
-             return bot.setProp('name', name)
+             return bot.setProp('name', results)
             });
                 .then(() => bot.say(`Great! I'll call you ${name}
 Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
