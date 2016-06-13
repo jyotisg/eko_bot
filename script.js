@@ -4,7 +4,10 @@ const Script = require('smooch-bot').Script;
 var PythonShell = require('python-shell');
 
 module.exports = new Script({
-
+processing: {
+        prompt: (bot) => bot.say('Beep boop...'),
+        receive: () => 'processing'
+    }
     start: {
         receive: (bot) => {
             return bot.say('jyoti')
