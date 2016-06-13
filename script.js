@@ -11,13 +11,8 @@ module.exports = new Script({
 
     start: {
         receive: (bot) => {
-            PythonShell.run('my_script.py', function (err, results) {
-            if (err) throw err;
-            // results is an array consisting of messages collected during execution 
-            console.log('results: %j', results);
              return bot.say(''+results)
                 .then(() => 'askName');
-            });
         }
     },
 
