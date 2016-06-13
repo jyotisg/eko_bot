@@ -7,7 +7,12 @@ module.exports = new Script({
 
     start: {
         receive: (bot) => {
-                   return bot.say('Hi! I\'m faltu Bot!')
+                   var pyshell = new PythonShell('my_script.py');
+                   pyshell.on('message', function (message) {
+  // received a message sent from the Python script (a simple "print" statement) 
+  console.log(message);
+});
+                   return bot.say(${message})
                    .then(() => 'askName');
         }
     },
