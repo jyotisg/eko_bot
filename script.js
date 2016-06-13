@@ -1,6 +1,7 @@
 'use strict';
 
 const Script = require('smooch-bot').Script;
+var PythonShell = require('python-shell');
 
 module.exports = new Script({
     processing: {
@@ -10,6 +11,11 @@ module.exports = new Script({
 
     start: {
         receive: (bot) => {
+            PythonShell.run('my_script.py', options, function (err, results) {
+            if (err) throw err;
+            // results is an array consisting of messages collected during execution 
+            console.log('results: %j', results);
+            });
             return bot.say('Hi! I\'m blaa blaa blaa Bot!')
                 .then(() => 'askName');
         }
